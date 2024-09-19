@@ -16,7 +16,6 @@ import {styles} from '../../assets/styles';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import di from '../../di';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 interface DetailInterface {
   name: string;
   image: string;
@@ -61,6 +60,10 @@ const Favorites = (props: any) => {
           setDataSource(undefined);
         }
       })();
+    } else {
+      setLoading(false);
+      setDataEpisodeId([]);
+      setDataSource(undefined);
     }
   }, [props.dataFavoriteMovies]);
 
@@ -145,17 +148,29 @@ const Favorites = (props: any) => {
     );
   };
 
+  const isEmptyDataSource = () => {
+    return (
+      <View style={[styles.container, styles.splashContainer]}>
+        <Text style={styles.title}>Data not found</Text>
+      </View>
+    );
+  };
+
   return (
     <Container>
       <View style={backgroundStyle}>
         <NavigationBar
-          title={dataSource?.name ?? 'Character'}
+          title={dataSource?.name ?? 'Favorites'}
           back
           onPress={() => props.navigation.goBack()}
         />
         <ScrollView style={styles.container}>
           <View style={styles.detailWrapper}>
-            {isLoading ? shimmerLoading() : detailCharacters()}
+            {isLoading
+              ? shimmerLoading()
+              : dataSource
+              ? detailCharacters()
+              : isEmptyDataSource()}
           </View>
         </ScrollView>
       </View>
