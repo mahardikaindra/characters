@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
   flatList: {
     paddingBottom: Platform.select({ios: 100, android: 50}),
   },
+  splashContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
@@ -41,6 +45,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Lekton-Bold',
     color: 'black',
+  },
+  textCenter: {
+    textAlign: 'center',
   },
   title: {
     fontSize: 20,
@@ -264,8 +271,10 @@ const styles = StyleSheet.create({
   versionContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
-    paddingTop: 200,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: height * 0.8,
   },
   versionText: {
     fontSize: 14,

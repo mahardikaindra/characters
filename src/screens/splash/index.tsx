@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
+import {styles} from '../../assets/styles';
 
 const Splash: React.FC = (props: any) => {
   useEffect(() => {
@@ -9,25 +10,14 @@ const Splash: React.FC = (props: any) => {
   }, [props?.navigation]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.splashContainer]}>
       <ActivityIndicator size="large" color="#0000ff" />
-      <Text style={styles.text}>Loading...</Text>
+      <Text style={[styles.sectionTitle, styles.textCenter]}>Welcome</Text>
+      <Text style={[styles.sectionDescription, styles.textCenter]}>
+        Loading...
+      </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-  },
-  text: {
-    marginTop: 20,
-    fontSize: 18,
-    color: '#0000ff',
-  },
-});
 
 export default Splash;
