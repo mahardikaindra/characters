@@ -151,6 +151,7 @@ const Favorites = (props: any) => {
   const isEmptyDataSource = () => {
     return (
       <View style={[styles.container, styles.splashContainer]}>
+        <Icon name="exclamation-circle" size={50} color="gray" />
         <Text style={styles.title}>Data not found</Text>
       </View>
     );

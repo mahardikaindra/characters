@@ -13,6 +13,7 @@ import {ActionCreators} from '../../redux/actions';
 import {Container, NavigationBar} from '../../components';
 import {styles} from '../../assets/styles';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Toast from 'react-native-toast-message';
 import di from '../../di';
 
 const Characters = (props: any) => {
@@ -30,9 +31,19 @@ const Characters = (props: any) => {
       if (data) {
         setLoading(false);
         setDataSource(data.results);
+        Toast.show({
+          type: 'success',
+          text1: 'Characters',
+          text2: 'Success get data',
+        });
       } else {
         setLoading(false);
         setDataSource([]);
+        Toast.show({
+          type: 'error',
+          text1: 'Characters',
+          text2: 'Failed get data',
+        });
       }
     })();
   }, []);

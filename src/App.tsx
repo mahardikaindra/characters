@@ -6,6 +6,7 @@ import {applyMiddleware, compose} from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
 import reducer from './redux/reducers';
 import Router from './router';
+import Toast from 'react-native-toast-message';
 
 const enhancer = compose(applyMiddleware(thunkMiddleware, logger));
 
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router />
+      <Toast />
     </Provider>
   );
 };
