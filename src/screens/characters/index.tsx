@@ -27,23 +27,32 @@ const Characters = (props: any) => {
 
   useEffect(() => {
     (async () => {
-      const data = await di.character.getAllCharacter();
-      if (data) {
-        setLoading(false);
-        setDataSource(data.results);
-        Toast.show({
-          type: 'success',
-          text1: 'Characters',
-          text2: 'Success get data',
-        });
-      } else {
-        setLoading(false);
+      try {
+        const data = await di.character.getAllCharacter();
+        if (data) {
+          setDataSource(data.results);
+          Toast.show({
+            type: 'success',
+            text1: 'Characters',
+            text2: 'Success get data',
+          });
+        } else {
+          setDataSource([]);
+          Toast.show({
+            type: 'error',
+            text1: 'Characters',
+            text2: 'Failed get data',
+          });
+        }
+      } catch (error) {
         setDataSource([]);
         Toast.show({
           type: 'error',
           text1: 'Characters',
           text2: 'Failed get data',
         });
+      } finally {
+        setLoading(false);
       }
     })();
   }, []);
